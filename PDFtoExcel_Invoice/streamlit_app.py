@@ -136,6 +136,8 @@ st.markdown("""
     color: #2F2E33;
     font-family: 'Helvetica Neue', sans-serif;
     text-align: center;
+    margin-top: 90px; /* Ajusta el valor según tus necesidades */
+
 }
 
 h3 {
