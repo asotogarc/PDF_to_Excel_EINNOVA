@@ -124,7 +124,7 @@ st.markdown("""
         background-color: #007B9A;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    h1, h3 {
+    h1 {
         color: #3A5199;
         font-family: 'Helvetica Neue', sans-serif;
         text-align: center;
@@ -137,7 +137,12 @@ st.markdown("""
     margin-top: 90px; /* Ajusta el valor según tus necesidades */
 }
 
-
+h3 {
+    color: #2F2E33;
+    font-family: 'Helvetica Neue', sans-serif;
+    text-align: center;
+    margin-top: 90px; /* Ajusta el valor según tus necesidades */
+}
     
     .stAlert {
         background-color: #f8d7da;
