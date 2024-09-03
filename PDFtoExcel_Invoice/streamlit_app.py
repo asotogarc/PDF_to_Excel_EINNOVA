@@ -231,7 +231,6 @@ h3 {
 # Descripción
 # Descripción
 
-st.markdown("<h2 style='text-align: center;'>TRANSFORMA TUS FACTURAS CON UN SOLO CLICK</h2>", unsafe_allow_html=True)
 
 
 st.markdown("<h2 style='text-align: center;'>📤 Sube tu Factura</h2>", unsafe_allow_html=True)
