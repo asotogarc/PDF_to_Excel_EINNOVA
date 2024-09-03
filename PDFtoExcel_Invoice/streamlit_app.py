@@ -9,48 +9,6 @@ import traceback
 import re
 import plotly.express as px
 
-import streamlit as st
-
-def add_einnova_header():
-    st.markdown("""
-    <style>
-    .einnova-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        z-index: 1000;
-    }
-    .einnova-logo {
-        color: #e21a27;
-        font-size: 24px;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .einnova-name {
-        color: #333333;
-        font-size: 16px;
-        font-weight: bold;
-    }
-    .main-content {
-        margin-top: 60px;  /* Ajusta este valor según la altura de tu cabecera */
-    }
-    </style>
-    <div class="einnova-header">
-        <span class="einnova-logo">I❤PDF</span>
-        <span class="einnova-name">Einnova</span>
-    </div>
-    <div class="main-content"></div>
-    """, unsafe_allow_html=True)
-
-# Usar esta función al principio de tu aplicación Streamlit
-add_einnova_header()
 
 
 # Configuración de logging mejorada
