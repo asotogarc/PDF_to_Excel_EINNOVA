@@ -215,8 +215,7 @@ st.markdown("<h1 style='text-align: center;'>EINNOVA | ANALIZADOR Y TRANSFORMADO
 # Descripción
 st.markdown("""
 <div class="info-box centered-text black-text">
-This advanced application analyzes and transforms your PDF invoices using artificial intelligence.
-Get detailed information, accounting entries and more.
+TRANSFORMA TUS FACTURAS PDF EN UN CLICK
 </div>
 """, unsafe_allow_html=True)
 
