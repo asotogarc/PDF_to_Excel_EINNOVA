@@ -92,207 +92,180 @@ st.set_page_config(page_title="Analizador Inteligente de Facturas", layout="wide
 
 # Estilos personalizados
 st.markdown("""
-    <style>
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+    :root {
+        --primary-color: #3A5199;
+        --secondary-color: #4CAF50;
+        --background-color: #f5f5f5;
+        --text-color: #333;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
     
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f5f5f5;
-        color: #333;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
     }
     
     .main {
-        background-color: #ffffff;
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
-    .stButton>button {
-        width: 100%;
-        border-radius: 20px;
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    
-    .stButton>button:hover {
-        background-color: #45a049;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    
-    .stDownloadButton>button {
-        width: 100%;
-        border-radius: 20px;
-        background-color: #008CBA;
-        color: white;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    
-    .stDownloadButton>button:hover {
-        background-color: #007B9A;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    h1, h2, h3 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 1rem;
     }
     
     h1 {
-        color: #3A5199;
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
         font-size: 2.5em;
-        margin-bottom: 30px;
+        margin-top: 2rem;
     }
-
+    
     h2 {
-        color: #2F2E33;
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        margin-top: 50px;
-        font-size: 1.8em;
+        font-size: 2em;
+        margin-top: 1.5rem;
     }
-
+    
     h3 {
-        color: #2F2E33;
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        margin-top: 40px;
         font-size: 1.5em;
+        margin-top: 1rem;
     }
     
-    .stAlert {
-        background-color: #f8d7da;
-        color: #721c24;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-    
-    .info-box {
-        background-color: #e9ecef;
-        margin-bottom: 15px;
-        padding: 15px;
-        border-radius: 5px;
-        color: #495057;
+    .stButton > button {
         width: 100%;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 0.75rem;
+        border-radius: 10px;
+        background-color: var(--secondary-color);
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
-
+    
+    .stButton > button:hover {
+        background-color: #45a049;
+        box-shadow: var(--box-shadow);
+    }
+    
+    .stDownloadButton > button {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 10px;
+        background-color: #008CBA;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .stDownloadButton > button:hover {
+        background-color: #007B9A;
+        box-shadow: var(--box-shadow);
+    }
+    
+    .info-box, .success-box, .warning-box, .factura-details, .asiento-contable, .resumen-general {
+        background-color: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--box-shadow);
+    }
+    
     .success-box {
-        background-color: #d4edda;
-        border-left: 6px solid #28a745;
-        margin-bottom: 15px;
-        padding: 15px;
-        border-radius: 5px;
-        text-align: center;
+        border-left: 6px solid var(--secondary-color);
         color: #155724;
     }
     
     .warning-box {
-        background-color: #fff3cd;
         border-left: 6px solid #ffc107;
-        margin-bottom: 15px;
-        padding: 15px;
-        border-radius: 5px;
         color: #856404;
     }
     
     .dataframe {
-        font-size: 12px;
         width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 1.5rem;
+        box-shadow: var(--box-shadow);
     }
     
     .dataframe th, .dataframe td {
-        border: 1px solid #ddd;
-        padding: 8px;
         text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
     }
     
     .dataframe th {
-        background-color: #f8f9fa;
-        color: #495057;
+        background-color: var(--primary-color);
+        color: white;
         font-weight: bold;
     }
     
+    .dataframe tr:last-child td {
+        border-bottom: none;
+    }
+    
     .dataframe tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #f8f9fa;
     }
     
     .dataframe tr:hover {
         background-color: #e9ecef;
     }
     
-    .centered-text {
-        text-align: center;
-    }
-    
-    .black-text {
-        color: black;
-    }
-    
-    .factura-details, .asiento-contable, .resumen-general {
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        padding: 20px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        text-align: left;
-        color: #495057;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .reportview-container {
-        margin-top: -2em;
-    }
-    
-    #MainMenu {visibility: hidden;}
-    .stDeployButton {display:none;}
-    footer {visibility: hidden;}
-    #stDecoration {display:none;}
-    header {visibility: hidden;}
-    [data-testid="stToolbar"] {visibility: hidden !important;}
-    
-    /* Nuevo estilo para el menú horizontal */
     .menu-horizontal {
         display: flex;
         justify-content: center;
-        background-color: #3A5199;
-        padding: 10px 0;
-        margin-bottom: 30px;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        box-shadow: var(--box-shadow);
     }
     
     .menu-item {
         color: white;
         text-decoration: none;
-        padding: 10px 20px;
-        margin: 0 10px;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
         border-radius: 5px;
         transition: background-color 0.3s;
     }
     
     .menu-item:hover {
-        background-color: #4a62a3;
+        background-color: rgba(255, 255, 255, 0.1);
     }
-    </style>
-    """, unsafe_allow_html=True)
+    
+    /* Ocultar elementos no deseados */
+    #MainMenu, footer, header, [data-testid="stToolbar"] {display: none !important;}
+    .stDeployButton {display: none !important;}
+</style>
+""", unsafe_allow_html=True)
 
 # Menú horizontal
 st.markdown("""
-    <div class="menu-horizontal">
-        <a href="#" class="menu-item">Inicio</a>
-        <a href="#sobre-nosotros" class="menu-item">Sobre Nosotros</a>
-        <a href="#contacto" class="menu-item">Contacto</a>
-    </div>
-    """, unsafe_allow_html=True)
+<nav class="menu-horizontal">
+    <a href="#" class="menu-item">Inicio</a>
+    <a href="#sobre-nosotros" class="menu-item">Sobre Nosotros</a>
+    <a href="#contacto" class="menu-item">Contacto</a>
+</nav>
+""", unsafe_allow_html=True)
 
-# Título
-st.markdown("<h1>EINNOVA | ANALIZADOR Y TRANSFORMADOR INTELIGENTE DE FACTURAS</h1>", unsafe_allow_html=True)
+# Título y descripción
+st.markdown("<h1>EINNOVA | Analizador y Transformador Inteligente de Facturas</h1>", unsafe_allow_html=True)
+st.markdown("<h2>Transforma tus Facturas con un Solo Click</h2>", unsafe_allow_html=True)
 
-# Descripción
-st.markdown("<h2>TRANSFORMA TUS FACTURAS CON UN SOLO CLICK</h2>", unsafe_allow_html=True)
-
+# Sección de carga de archivo
 st.markdown("<h3>📤 Sube tu Factura</h3>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Selecciona tu factura en PDF", type="pdf")
 
@@ -309,24 +282,24 @@ def process_factura(pdf_content):
             
             st.markdown("<h3>🧾 Detalles de la Factura</h3>", unsafe_allow_html=True)
             st.markdown(f"""
-                <div class='factura-details'>
-                    <p><strong>Tipo de servicio/producto:</strong> {json_data.get('tipo_servicio', 'No especificado')}</p>
-                    <p><strong>Tipo de pago:</strong> {json_data.get('tipo_pago', 'No especificado')}</p>
-                </div>
+            <div class='factura-details'>
+                <p><strong>Tipo de servicio/producto:</strong> {json_data.get('tipo_servicio', 'No especificado')}</p>
+                <p><strong>Tipo de pago:</strong> {json_data.get('tipo_pago', 'No especificado')}</p>
+            </div>
             """, unsafe_allow_html=True)
 
             st.markdown("<h3>📝 Asiento Contable</h3>", unsafe_allow_html=True)
             st.markdown(f"""
-                <div class='asiento-contable'>
-                    <p>{json_data.get('asiento_contable', 'No se pudo generar el asiento contable')}</p>
-                </div>
+            <div class='asiento-contable'>
+                <p>{json_data.get('asiento_contable', 'No se pudo generar el asiento contable')}</p>
+            </div>
             """, unsafe_allow_html=True)
 
             st.markdown("<h3>📊 Resumen General</h3>", unsafe_allow_html=True)
             st.markdown(f"""
-                <div class='resumen-general'>
-                    <p>{df['resumen'].iloc[0] if 'resumen' in df.columns else 'No se pudo generar el resumen general'}</p>
-                </div>
+            <div class='resumen-general'>
+                <p>{df['resumen'].iloc[0] if 'resumen' in df.columns else 'No se pudo generar el resumen general'}</p>
+            </div>
             """, unsafe_allow_html=True)
 
             # Mostrar el DataFrame
@@ -336,7 +309,12 @@ def process_factura(pdf_content):
             # Gráfico de ejemplo (ajusta según los datos reales de tu JSON)
             if 'importe_total' in json_data:
                 fig = px.pie(names=['IVA', 'Base Imponible'], values=[json_data.get('iva', 0), json_data.get('base_imponible', 0)])
-                fig.update_layout(title_text='Desglose de la Factura', title_font_size=20)
+                fig.update_layout(
+                    title_text='Desglose de la Factura',
+                    title_font_size=20,
+                    height=500,
+                    margin=dict(t=50, b=50, l=50, r=50)
+                )
                 st.plotly_chart(fig, use_container_width=True)
 
             col1, col2 = st.columns(2)
@@ -376,12 +354,18 @@ if uploaded_file is not None:
 st.markdown("<h2 id='sobre-nosotros'>Sobre Nosotros</h2>", unsafe_allow_html=True)
 st.markdown("""
     <div class="info-box">
-        <p>Einnova es una empresa innovadora especializada en soluciones tecnológicas para la gestión empresarial. 
-        Nuestro Analizador y Transformador Inteligente de Facturas utiliza inteligencia artificial avanzada para 
-        simplificar y optimizar el proceso de gestión de facturas, ahorrando tiempo y recursos a nuestros clientes.</p>
+        <p>Einnova es una empresa líder en innovación tecnológica, especializada en soluciones 
+        de vanguardia para la gestión empresarial. Nuestro Analizador y Transformador Inteligente 
+        de Facturas representa la culminación de años de investigación y desarrollo en el campo 
+        de la inteligencia artificial y el procesamiento de documentos.</p>
         
-        <p>Con años de experiencia en el sector y un equipo de expertos en tecnología y contabilidad, 
-        ofrecemos una herramienta precisa y eficiente que se adapta a las necesidades específicas de cada empresa.</p>
+        <p>Con un equipo multidisciplinario de expertos en tecnología, contabilidad y análisis 
+        de datos, ofrecemos una herramienta que no solo simplifica la gestión de facturas, sino 
+        que también proporciona insights valiosos para la toma de decisiones empresariales.</p>
+        
+        <p>Nuestra misión es empoderar a las empresas con tecnología inteligente, permitiéndoles 
+        optimizar sus procesos, reducir errores y liberar recursos para enfocarse en su crecimiento 
+        y expansión.</p>
     </div>
 """, unsafe_allow_html=True)
 
@@ -389,17 +373,36 @@ st.markdown("""
 st.markdown("<h2 id='contacto'>Contacto</h2>", unsafe_allow_html=True)
 st.markdown("""
     <div class="info-box">
-        <p>¿Tienes preguntas o necesitas más información? No dudes en contactarnos:</p>
+        <p>Estamos aquí para ayudarte. Si tienes preguntas, necesitas soporte técnico o quieres 
+        saber más sobre cómo nuestras soluciones pueden beneficiar a tu empresa, no dudes en 
+        contactarnos:</p>
         <ul>
             <li>📧 Email: info@einnova.com</li>
             <li>📞 Teléfono: +34 912 345 678</li>
             <li>🏢 Dirección: Calle Innovación, 123, 28001 Madrid, España</li>
         </ul>
+        <p>Nuestro equipo de atención al cliente está disponible de lunes a viernes, 
+        de 9:00 a 18:00 horas (CET).</p>
     </div>
 """, unsafe_allow_html=True)
+
+# Formulario de contacto
+st.markdown("<h3>Envíanos un mensaje</h3>", unsafe_allow_html=True)
+with st.form("contact_form"):
+    nombre = st.text_input("Nombre")
+    email = st.text_input("Email")
+    mensaje = st.text_area("Mensaje")
+    submit_button = st.form_submit_button("Enviar mensaje")
+
+    if submit_button:
+        # Aquí puedes agregar la lógica para manejar el envío del formulario
+        st.success("Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.")
 
 # Footer
 st.markdown("""
     <hr>
-    <p style='text-align: center; color: #7f8c8d;'>© 2024 Analizador y Transformador Inteligente de Facturas. Einnova.</p>
+    <p style='text-align: center; color: #7f8c8d;'>
+        © 2024 Einnova - Analizador y Transformador Inteligente de Facturas. 
+        Todos los derechos reservados.
+    </p>
 """, unsafe_allow_html=True)
