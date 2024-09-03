@@ -194,6 +194,16 @@ st.markdown("""
         text-align: center;
         color: black;
     }
+
+    .reportview-container {
+            margin-top: -2em;
+        }
+        #MainMenu {visibility: hidden;}
+        .stDeployButton {display:none;}
+        footer {visibility: hidden;}
+        #stDecoration {display:none;}
+        header {visibility: hidden;}
+        [data-testid="stToolbar"] {visibility: hidden !important;}
     </style>
     """, unsafe_allow_html=True)
 
