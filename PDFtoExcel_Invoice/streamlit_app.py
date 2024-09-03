@@ -87,19 +87,27 @@ def generate_json_from_pdf(pdf_content):
         logger.error(f"Traceback: {traceback.format_exc()}")
         return None
 
-
-
 # Configuración de la página
 st.set_page_config(page_title="Analizador Inteligente de Facturas", layout="wide")
 
 # Estilos personalizados
 st.markdown("""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+    
     .main {
         background-color: #ffffff;
         padding: 2rem;
         border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+    
     .stButton>button {
         width: 100%;
         border-radius: 20px;
@@ -108,10 +116,12 @@ st.markdown("""
         font-weight: bold;
         transition: all 0.3s ease;
     }
+    
     .stButton>button:hover {
         background-color: #45a049;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+    
     .stDownloadButton>button {
         width: 100%;
         border-radius: 20px;
@@ -120,29 +130,35 @@ st.markdown("""
         font-weight: bold;
         transition: all 0.3s ease;
     }
+    
     .stDownloadButton>button:hover {
         background-color: #007B9A;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+    
     h1 {
         color: #3A5199;
-        font-family: 'Helvetica Neue', sans-serif;
+        font-family: 'Roboto', sans-serif;
         text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 30px;
     }
 
     h2 {
-    color: #2F2E33;
-    font-family: 'Helvetica Neue', sans-serif;
-    text-align: center;
-    margin-top: 90px; /* Ajusta el valor según tus necesidades */
-}
+        color: #2F2E33;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.8em;
+    }
 
-h3 {
-    color: #2F2E33;
-    font-family: 'Helvetica Neue', sans-serif;
-    text-align: center;
-    margin-top: 90px; /* Ajusta el valor según tus necesidades */
-}
+    h3 {
+        color: #2F2E33;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1.5em;
+    }
     
     .stAlert {
         background-color: #f8d7da;
@@ -151,89 +167,133 @@ h3 {
         border-radius: 5px;
         margin-bottom: 10px;
     }
+    
     .info-box {
-    background-color: #d5d6d2;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 5px;
-    color: #ffffff;
-    width: 300px; /* Ajusta el valor según tus necesidades */
-}
+        background-color: #e9ecef;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 5px;
+        color: #495057;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
     .success-box {
-        background-color: #ddffdd;
-        border-left: 6px solid #4CAF50;
+        background-color: #d4edda;
+        border-left: 6px solid #28a745;
         margin-bottom: 15px;
         padding: 15px;
         border-radius: 5px;
         text-align: center;
-        color: black;
+        color: #155724;
     }
+    
     .warning-box {
-        background-color: #ffffcc;
-        border-left: 6px solid #ffeb3b;
+        background-color: #fff3cd;
+        border-left: 6px solid #ffc107;
         margin-bottom: 15px;
         padding: 15px;
         border-radius: 5px;
+        color: #856404;
     }
+    
     .dataframe {
         font-size: 12px;
         width: 100%;
         border-collapse: collapse;
+        margin-top: 20px;
     }
+    
     .dataframe th, .dataframe td {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: left;
     }
+    
     .dataframe th {
-        background-color: #f2f2f2;
-        color: #333;
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: bold;
     }
+    
     .dataframe tr:nth-child(even) {
-        background-color: #f9f9f9;
+        background-color: #f2f2f2;
     }
+    
     .dataframe tr:hover {
-        background-color: #f5f5f5;
+        background-color: #e9ecef;
     }
+    
     .centered-text {
         text-align: center;
     }
+    
     .black-text {
         color: black;
     }
+    
     .factura-details, .asiento-contable, .resumen-general {
-        background-color: #f0f8ff;
-        border: 1px solid #b0d4ff;
-        padding: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 20px;
         border-radius: 5px;
-        margin-bottom: 15px;
-        text-align: center;
-        color: black;
+        margin-bottom: 20px;
+        text-align: left;
+        color: #495057;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .reportview-container {
-            margin-top: -2em;
-        }
-        #MainMenu {visibility: hidden;}
-        .stDeployButton {display:none;}
-        footer {visibility: hidden;}
-        #stDecoration {display:none;}
-        header {visibility: hidden;}
-        [data-testid="stToolbar"] {visibility: hidden !important;}
+        margin-top: -2em;
+    }
+    
+    #MainMenu {visibility: hidden;}
+    .stDeployButton {display:none;}
+    footer {visibility: hidden;}
+    #stDecoration {display:none;}
+    header {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden !important;}
+    
+    /* Nuevo estilo para el menú horizontal */
+    .menu-horizontal {
+        display: flex;
+        justify-content: center;
+        background-color: #3A5199;
+        padding: 10px 0;
+        margin-bottom: 30px;
+    }
+    
+    .menu-item {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    
+    .menu-item:hover {
+        background-color: #4a62a3;
+    }
     </style>
     """, unsafe_allow_html=True)
 
+# Menú horizontal
+st.markdown("""
+    <div class="menu-horizontal">
+        <a href="#" class="menu-item">Inicio</a>
+        <a href="#sobre-nosotros" class="menu-item">Sobre Nosotros</a>
+        <a href="#contacto" class="menu-item">Contacto</a>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Título
-st.markdown("<h1 style='text-align: center;'>EINNOVA | ANALIZADOR Y TRANSFORMADOR INTELIGENTE DE FACTURAS </h1>", unsafe_allow_html=True)
+st.markdown("<h1>EINNOVA | ANALIZADOR Y TRANSFORMADOR INTELIGENTE DE FACTURAS</h1>", unsafe_allow_html=True)
 
 # Descripción
-# Descripción
+st.markdown("<h2>TRANSFORMA TUS FACTURAS CON UN SOLO CLICK</h2>", unsafe_allow_html=True)
 
-st.markdown("<h2 style='text-align: center;'>TRANSFORMA TUS FACTURAS CON UN SOLO CLICK</h2>", unsafe_allow_html=True)
-
-
-st.markdown("<h2 style='text-align: center;'>📤 Sube tu Factura</h2>", unsafe_allow_html=True)
+st.markdown("<h3>📤 Sube tu Factura</h3>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Selecciona tu factura en PDF", type="pdf")
 
 def process_factura(pdf_content):
@@ -247,7 +307,7 @@ def process_factura(pdf_content):
 
             df = pd.DataFrame([json_data])
             
-            st.markdown("<h3 style='text-align: center;'>🧾 Detalles de la Factura</h3>", unsafe_allow_html=True)
+            st.markdown("<h3>🧾 Detalles de la Factura</h3>", unsafe_allow_html=True)
             st.markdown(f"""
                 <div class='factura-details'>
                     <p><strong>Tipo de servicio/producto:</strong> {json_data.get('tipo_servicio', 'No especificado')}</p>
@@ -255,14 +315,14 @@ def process_factura(pdf_content):
                 </div>
             """, unsafe_allow_html=True)
 
-            st.markdown("<h3 style='text-align: center;'>📝 Asiento Contable</h3>", unsafe_allow_html=True)
+            st.markdown("<h3>📝 Asiento Contable</h3>", unsafe_allow_html=True)
             st.markdown(f"""
                 <div class='asiento-contable'>
                     <p>{json_data.get('asiento_contable', 'No se pudo generar el asiento contable')}</p>
                 </div>
             """, unsafe_allow_html=True)
 
-            st.markdown("<h3 style='text-align: center;'>📊 Resumen General</h3>", unsafe_allow_html=True)
+            st.markdown("<h3>📊 Resumen General</h3>", unsafe_allow_html=True)
             st.markdown(f"""
                 <div class='resumen-general'>
                     <p>{df['resumen'].iloc[0] if 'resumen' in df.columns else 'No se pudo generar el resumen general'}</p>
@@ -270,7 +330,7 @@ def process_factura(pdf_content):
             """, unsafe_allow_html=True)
 
             # Mostrar el DataFrame
-            st.markdown("<h3 style='text-align: center;'>🔍 Conjunto generado</h3>", unsafe_allow_html=True)
+            st.markdown("<h3>🔍 Conjunto generado</h3>", unsafe_allow_html=True)
             st.dataframe(df)
 
             # Gráfico de ejemplo (ajusta según los datos reales de tu JSON)
@@ -311,6 +371,32 @@ if uploaded_file is not None:
     except Exception as e:
         st.markdown(f'<div class="warning-box">❌ Error al leer el archivo PDF: {str(e)}</div>', unsafe_allow_html=True)
         logger.exception("Error detallado al leer PDF:")
+
+# Sección "Sobre Nosotros"
+st.markdown("<h2 id='sobre-nosotros'>Sobre Nosotros</h2>", unsafe_allow_html=True)
+st.markdown("""
+    <div class="info-box">
+        <p>Einnova es una empresa innovadora especializada en soluciones tecnológicas para la gestión empresarial. 
+        Nuestro Analizador y Transformador Inteligente de Facturas utiliza inteligencia artificial avanzada para 
+        simplificar y optimizar el proceso de gestión de facturas, ahorrando tiempo y recursos a nuestros clientes.</p>
+        
+        <p>Con años de experiencia en el sector y un equipo de expertos en tecnología y contabilidad, 
+        ofrecemos una herramienta precisa y eficiente que se adapta a las necesidades específicas de cada empresa.</p>
+    </div>
+""", unsafe_allow_html=True)
+
+# Sección de Contacto
+st.markdown("<h2 id='contacto'>Contacto</h2>", unsafe_allow_html=True)
+st.markdown("""
+    <div class="info-box">
+        <p>¿Tienes preguntas o necesitas más información? No dudes en contactarnos:</p>
+        <ul>
+            <li>📧 Email: info@einnova.com</li>
+            <li>📞 Teléfono: +34 912 345 678</li>
+            <li>🏢 Dirección: Calle Innovación, 123, 28001 Madrid, España</li>
+        </ul>
+    </div>
+""", unsafe_allow_html=True)
 
 # Footer
 st.markdown("""
