@@ -92,12 +92,20 @@ def generate_json_from_pdf(pdf_content):
 # Configuración de la página
 st.set_page_config(page_title="Herramientas PDF", layout="wide")
 
-# Estilos personalizados
+# Ocultar el menú principal
+st.markdown("""
+<style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+</style>
+""", unsafe_allow_html=True)
+
+# Estilos personalizados actualizados
 st.markdown("""
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #f0f2f5;
+        background-color: white;
     }
     .stApp {
         max-width: 1200px;
@@ -122,11 +130,11 @@ st.markdown("""
         gap: 20px;
     }
     .tool-card {
-        background-color: white;
+        background-color: #f0f2f5;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         padding: 20px;
-        width: 200px;
+        width: calc(33.333% - 20px);
         text-align: center;
         transition: transform 0.3s ease;
     }
@@ -172,6 +180,19 @@ tools = [
     {"name": "PDF a Word", "icon": "📄", "description": "Convierte fácilmente tus archivos PDF a DOCX de WORD editables."},
     {"name": "PDF a PowerPoint", "icon": "📊", "description": "Convierte tus archivos PDF a presentaciones PPTX de POWERPOINT."},
     {"name": "PDF a Excel", "icon": "📈", "description": "Extrae directamente datos de PDF a Excel en pocos segundos."}
+]
+
+# Crear la cuadrícula de herramientas
+st.markdown("<div class='tool-grid'>", unsafe_allow_html=True)
+for tool in tools:
+    st.markdown(f"""
+        <div class='tool-card'>
+            <div class='tool-icon'>{tool['icon']}</div>
+            <div class='tool-title'>{tool['name']}</div>
+            <div class='tool-description'>{tool['description']}</div>
+        </div>
+    """, unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
 ]
 
 # Crear la cuadrícula de herramientas
