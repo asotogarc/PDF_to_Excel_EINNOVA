@@ -131,7 +131,7 @@ st.markdown("""
     }
 
     h2 {
-        color: #3A5199;
+        color: #2F2E33;
         font-family: 'Helvetica Neue', sans-serif;
         text-align: center;
     }
