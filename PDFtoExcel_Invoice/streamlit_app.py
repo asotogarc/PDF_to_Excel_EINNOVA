@@ -98,7 +98,7 @@ st.set_page_config(page_title="Analizador Inteligente de Facturas", layout="wide
 st.markdown("""
     <style>
     .main {
-        background-color: #336B87;
+        background-color: #66A5AD;
         padding: 2rem;
         border-radius: 10px;
     }
