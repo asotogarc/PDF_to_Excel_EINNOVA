@@ -125,7 +125,7 @@ st.markdown("""
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     h1, h2, h3 {
-        color: #2C3E50;
+        color: #3A5199;
         font-family: 'Helvetica Neue', sans-serif;
         text-align: center;
     }
