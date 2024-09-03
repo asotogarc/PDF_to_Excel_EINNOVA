@@ -315,5 +315,4 @@ if uploaded_file is not None:
 # Footer
 st.markdown("""
     <hr>
-    <p style='text-align: center; color: #7f8c8d;'>© 2024 Analizador y Transformador Inteligente de Facturas. Einnova.</p>
 """, unsafe_allow_html=True)
