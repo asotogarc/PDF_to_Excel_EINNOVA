@@ -214,11 +214,9 @@ st.markdown("<h1 style='text-align: center;'>EINNOVA | ANALIZADOR Y TRANSFORMADO
 
 # Descripción
 # Descripción
-st.markdown("""
-<div class="info-box centered-text black-text">
-TRANSFORMA TUS FACTURAS PDF EN UN CLICK
-</div>
-""", unsafe_allow_html=True)
+
+st.markdown("<h2 style='text-align: center;'>TRANSFORMA TUS FACTURAS CON UN SOLO CLICK</h2>", unsafe_allow_html=True)
+
 
 st.markdown("<h2 style='text-align: center;'>📤 Sube tu Factura</h2>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Selecciona tu factura en PDF", type="pdf")
