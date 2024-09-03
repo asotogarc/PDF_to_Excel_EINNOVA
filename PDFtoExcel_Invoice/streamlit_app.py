@@ -87,6 +87,21 @@ def generate_json_from_pdf(pdf_content):
         logger.error(f"Traceback: {traceback.format_exc()}")
         return None
 
+st.markdown("""
+    <style>
+        .reportview-container {
+            margin-top: -2em;
+        }
+        #MainMenu {visibility: hidden;}
+        .stDeployButton {display:none;}
+        footer {visibility: hidden;}
+        #stDecoration {display:none;}
+        header {visibility: hidden;}
+        [data-testid="stToolbar"] {visibility: hidden !important;}
+    </style>
+""", unsafe_allow_html=True)
+
+
 # Configuración de la página
 st.set_page_config(page_title="Analizador Inteligente de Facturas", layout="wide")
 
