@@ -141,7 +141,7 @@ st.markdown("""
         margin-bottom: 15px;
         padding: 15px;
         border-radius: 5px;
-        color: #2f2e33;
+        color: #ffffff;
 
     }
     .success-box {
