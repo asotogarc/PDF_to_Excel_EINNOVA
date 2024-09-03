@@ -212,12 +212,10 @@ st.markdown("""
 st.markdown("<h1 style='text-align: center;'>EINNOVA | ANALIZADOR Y TRANSFORMADOR INTELIGENTE DE FACTURAS </h1>", unsafe_allow_html=True)
 
 # Descripción
-st.markdown("""
-    <div class="info-box centered-text black-text">
-    Esta aplicación avanzada analiza y transforma tus facturas en PDF utilizando inteligencia artificial. 
-    Obtén información detallada, asientos contables y más.
-    </div>
-""", unsafe_allow_html=True)
+<div class="info-box centered-text" style="color: red;">
+Esta aplicación avanzada analiza y transforma tus facturas en PDF utilizando inteligencia artificial. 
+Obtén información detallada, asientos contables y más.
+</div>
 
 st.markdown("<h2 style='text-align: center;'>📤 Sube tu Factura</h2>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Selecciona tu factura en PDF", type="pdf")
