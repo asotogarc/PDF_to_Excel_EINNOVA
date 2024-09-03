@@ -137,8 +137,7 @@ st.markdown("""
         margin-bottom: 10px;
     }
     .info-box {
-        background-color: #2f2e33;
-        border-left: 6px solid #2196F3;
+        background-color: #d5d6d2;
         margin-bottom: 15px;
         padding: 15px;
         border-radius: 5px;
