@@ -137,13 +137,14 @@ st.markdown("""
         margin-bottom: 10px;
     }
     .info-box {
-        background-color: #d5d6d2;
-        margin-bottom: 15px;
-        padding: 15px;
-        border-radius: 5px;
-        color: #ffffff;
+    background-color: #d5d6d2;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    width: 300px; /* Ajusta el valor según tus necesidades */
+}
 
-    }
     .success-box {
         background-color: #ddffdd;
         border-left: 6px solid #4CAF50;
