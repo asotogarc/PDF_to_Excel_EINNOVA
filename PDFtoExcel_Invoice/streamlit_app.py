@@ -227,7 +227,6 @@ h3 {
     """, unsafe_allow_html=True)
 
 # Título
-st.markdown("<h1 style='text-align: center;'>EINNOVA | ANALIZADOR Y TRANSFORMADOR INTELIGENTE DE FACTURAS </h1>", unsafe_allow_html=True)
 
 # Descripción
 # Descripción
