@@ -193,7 +193,7 @@ for tool in tools:
         </div>
     """, unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
-]
+
 
 # Crear la cuadrícula de herramientas
 st.markdown("<div class='tool-grid'>", unsafe_allow_html=True)
