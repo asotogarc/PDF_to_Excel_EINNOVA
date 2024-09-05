@@ -133,7 +133,7 @@ st.markdown("""
     }
 
     h2 {
-    color: #2F2E33;
+    color: #ffffff;
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
     top: 0; /* Ajusta el valor según tus necesidades */
