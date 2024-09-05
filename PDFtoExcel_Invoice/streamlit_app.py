@@ -234,7 +234,7 @@ h3 {
 
 
 
-st.markdown("<h2 style='text-align: center;'>📤 SUBE TU FACTUA 📤</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>📤 SUBE TU FACTURA 📤</h2>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Selecciona tu factura en PDF", type="pdf")
 
 def process_factura(pdf_content):
